@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Falcon Apex Security Group | Welkom, Free State</title>
+<meta name="description" content="Real Security. Real People. Real Protection. Falcon Apex Security Group delivers armed response, guarding, CCTV, VIP protection and 24/7 monitoring across Welkom and the Free State.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --void:#0a0908;
+    --gunmetal:#17181b;
+    --panel:#1d1e22;
+    --steel:#54585f;
+    --steel-light:#8b9099;
+    --gold:#c9973f;
+    --gold-bright:#eec877;
+    --gold-dim:#8a6a2c;
+    --bone:#ece7dc;
+    --bone-dim:#b7b2a6;
+    --line: rgba(201,151,63,0.35);
+    --skew: 6deg;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--void);
+    color:var(--bone);
+    font-family:'Barlow', sans-serif;
+    font-size:17px;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  img{max-width:100%; display:block;}
+  a{color:inherit; text-decoration:none;}
+  ul{list-style:none;}
+
+  h1,h2,h3,h4{
+    font-family:'Oswald', sans-serif;
+    text-transform:uppercase;
+    letter-spacing:0.02em;
+    font-weight:700;
+    line-height:1.05;
+  }
+  .eyebrow{
+    font-family:'Barlow Condensed', sans-serif;
+    font-weight:600;
+    letter-spacing:0.32em;
+    text-transform:uppercase;
+    font-size:13px;
+    color:var(--gold);
+  }
+  .stars{ color:var(--gold); letter-spacing:0.4em; font-size:12px; margin:10px 0; }
+
+  .wrap{ max-width:1200px; margin:0 auto; padding:0 32px; }
+  section{ position:relative; }
+
+  /* ---------- NOISE / TEXTURE ---------- */
+  .grain::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+    pointer-events:none;
+    z-index:1;
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    background:rgba(10,9,8,0.86);
+    backdrop-filter: blur(10px);
+    border-bottom:1px solid rgba(201,151,63,0.18);
+    transition: border-color .3s;
+  }
+  .nav{
+    max-width:1200px; margin:0 auto; padding:16px 32px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .brand{ display:flex; align-items:center; gap:12px; }
+  .brand img{ height:40px; width:auto; }
+  .brand-text{ font-family:'Oswald',sans-serif; font-weight:700; font-size:18px; letter-spacing:0.06em; }
+  .brand-text span{ color:var(--gold); }
+  nav.links{ display:flex; gap:34px; }
+  nav.links a{
+    font-family:'Barlow Condensed', sans-serif;
+    font-size:15px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--bone-dim);
+    position:relative;
+    padding-bottom:4px;
+    transition:color .25s;
+  }
+  nav.links a:hover{ color:var(--gold-bright); }
+  .nav-cta{
+    font-family:'Barlow Condensed', sans-serif;
+    font-weight:700; letter-spacing:0.1em; text-transform:uppercase; font-size:14px;
+    background:var(--gold); color:var(--void);
+    padding:10px 22px;
+    clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+    transition: background .25s;
+  }
+  .nav-cta:hover{ background:var(--gold-bright); }
+  .burger{ display:none; }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    min-height:100svh;
+    display:flex; align-items:flex-end;
+    background:
+      linear-gradient(180deg, rgba(8,7,6,0.35) 0%, rgba(8,7,6,0.55) 45%, var(--void) 92%),
+      url('images/hero-squad.jpg') center 18% / cover no-repeat;
+  }
+  .hero-inner{
+    width:100%;
+    padding:180px 32px 90px;
+    max-width:1200px; margin:0 auto;
+  }
+  .hero .eyebrow{ margin-bottom:18px; display:block; }
+  .hero h1{
+    font-size:clamp(42px, 7vw, 84px);
+    color:var(--bone);
+    text-shadow:0 6px 30px rgba(0,0,0,0.6);
+  }
+  .hero h1 .accent{ color:var(--gold); display:block; }
+  .hero-sub{
+    margin-top:22px; max-width:520px;
+    color:var(--bone-dim); font-size:18px;
+  }
+  .hero-actions{ margin-top:38px; display:flex; gap:18px; flex-wrap:wrap; }
+  .btn{
+    font-family:'Barlow Condensed', sans-serif;
+    font-weight:700; letter-spacing:0.12em; text-transform:uppercase; font-size:15px;
+    padding:16px 30px;
+    display:inline-flex; align-items:center; gap:10px;
+    transition:all .25s;
+  }
+  .btn-primary{
+    background:var(--gold); color:var(--void);
+    clip-path: polygon(14px 0, 100% 0, calc(100% - 14px) 100%, 0 100%);
+  }
+  .btn-primary:hover{ background:var(--gold-bright); transform:translateY(-2px); }
+  .btn-ghost{
+    border:1px solid rgba(236,231,220,0.35); color:var(--bone);
+    clip-path: polygon(14px 0, 100% 0, calc(100% - 14px) 100%, 0 100%);
+  }
+  .btn-ghost:hover{ border-color:var(--gold); color:var(--gold-bright); }
+
+  .hero-strip{
+    margin-top:56px;
+    display:flex; gap:0; flex-wrap:wrap;
+    border-top:1px solid var(--line);
+  }
+  .hero-strip div{
+    flex:1 1 140px;
+    padding:18px 20px 0;
+    border-left:1px solid var(--line);
+  }
+  .hero-strip div:first-child{ border-left:none; padding-left:0; }
+  .hero-strip .num{ font-family:'Oswald',sans-serif; font-size:30px; color:var(--gold); }
+  .hero-strip .lbl{ font-family:'Barlow Condensed',sans-serif; font-size:13px; letter-spacing:0.1em; text-transform:uppercase; color:var(--bone-dim); margin-top:4px;}
+
+  /* ---------- Diagonal divider signature ---------- */
+  .cut-divider{
+    height:70px;
+    background:var(--gunmetal);
+    clip-path: polygon(0 100%, 100% 0, 100% 100%);
+    position:relative;
+  }
+  .cut-divider.rev{ clip-path: polygon(0 0, 100% 100%, 0 100%); }
+  .cut-divider::after{
+    content:"";
+    position:absolute; inset:0;
+    background:var(--gold);
+    clip-path: polygon(0 100%, 100% 0, 100% calc(100% - 3px), 3px 100%);
+  }
+  .cut-divider.rev::after{
+    clip-path: polygon(0 0, 100% 100%, 0 100%, 0 calc(100% - 3px));
+  }
+
+  /* ---------- SECTION HEADERS ---------- */
+  .sec-head{ max-width:640px; margin-bottom:56px; }
+  .sec-head h2{ font-size:clamp(30px,4vw,46px); margin-top:14px; color:var(--bone); }
+  .sec-head p{ margin-top:16px; color:var(--bone-dim); font-size:16.5px; }
+  .sec-pad{ padding:110px 0; }
+
+  /* ---------- TRUST / MISSION BAR ---------- */
+  .mission{
+    background:var(--gunmetal);
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    padding:64px 0;
+    position:relative;
+  }
+  .mission blockquote{
+    font-family:'Oswald',sans-serif;
+    font-size:clamp(20px,2.6vw,30px);
+    text-align:center;
+    color:var(--bone);
+    max-width:920px; margin:0 auto;
+    text-transform:uppercase;
+    letter-spacing:0.01em;
+  }
+  .mission blockquote .g{ color:var(--gold); }
+  .mission cite{ display:block; text-align:center; margin-top:22px; font-style:normal; color:var(--steel-light); font-family:'Barlow Condensed',sans-serif; letter-spacing:0.14em; text-transform:uppercase; font-size:14px;}
+
+  /* ---------- SERVICES ---------- */
+  .services-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .service-card{
+    background:var(--void);
+    padding:38px 30px;
+    transition:background .3s;
+    position:relative;
+  }
+  .service-card:hover{ background:var(--gunmetal); }
+  .service-card .ico{
+    width:44px; height:44px;
+    margin-bottom:22px;
+    color:var(--gold);
+  }
+  .service-card h3{ font-size:19px; color:var(--bone); margin-bottom:10px; letter-spacing:0.02em;}
+  .service-card p{ color:var(--bone-dim); font-size:15px; }
+
+  /* ---------- ABOUT / FOUNDER ---------- */
+  .about{
+    display:grid;
+    grid-template-columns:0.85fr 1.15fr;
+    gap:70px;
+    align-items:center;
+  }
+  .about-img{
+    position:relative;
+  }
+  .about-img img{
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 40px), calc(100% - 40px) 100%, 0 100%);
+    border:1px solid var(--line);
+  }
+  .about-img .tag{
+    position:absolute; bottom:-1px; left:-1px;
+    background:var(--gold); color:var(--void);
+    font-family:'Barlow Condensed',sans-serif; font-weight:700; letter-spacing:0.1em;
+    text-transform:uppercase; font-size:13px;
+    padding:10px 18px;
+  }
+  .about-copy h2{ font-size:clamp(28px,3.6vw,42px); color:var(--bone); margin:14px 0 22px;}
+  .about-copy p{ color:var(--bone-dim); margin-bottom:16px; font-size:16.5px; }
+  .about-copy .sign{
+    font-family:'Oswald',sans-serif; margin-top:30px;
+    color:var(--bone); font-size:17px; letter-spacing:0.02em;
+    border-top:1px solid var(--line); padding-top:20px;
+  }
+  .about-copy .sign span{ display:block; color:var(--steel-light); font-family:'Barlow Condensed',sans-serif; font-size:13px; letter-spacing:0.14em; text-transform:uppercase; margin-top:6px; font-weight:600;}
+
+  /* ---------- WHY / STATS STRIPE with bg image ---------- */
+  .stripe{
+    background:
+      linear-gradient(100deg, rgba(10,9,8,0.94) 30%, rgba(10,9,8,0.72) 100%),
+      url('images/welkom-industrial.jpg') right center / cover no-repeat;
+    padding:100px 0;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .why-list{ max-width:560px; margin-top:30px; }
+  .why-list li{
+    display:flex; gap:18px; padding:20px 0;
+    border-top:1px solid rgba(236,231,220,0.12);
+  }
+  .why-list li:last-child{ border-bottom:1px solid rgba(236,231,220,0.12); }
+  .why-list .n{ font-family:'Oswald',sans-serif; color:var(--gold); font-size:16px; width:32px; flex:none; }
+  .why-list h4{ font-size:16px; color:var(--bone); text-transform:none; font-weight:600; }
+  .why-list p{ color:var(--bone-dim); font-size:15px; margin-top:4px; }
+
+  /* ---------- PROMO BANNER ---------- */
+  .promo{
+    background:var(--gold);
+    color:var(--void);
+    padding:56px 0;
+    position:relative;
+    overflow:hidden;
+  }
+  .promo-inner{
+    display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:28px;
+  }
+  .promo .num{ font-family:'Oswald',sans-serif; font-size:clamp(50px,8vw,96px); line-height:0.85; }
+  .promo .num sup{ font-size:0.35em; top:-0.6em; }
+  .promo-text h3{ font-size:clamp(20px,2.6vw,30px); color:var(--void); }
+  .promo-text p{ font-family:'Barlow Condensed',sans-serif; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; margin-top:6px; font-size:15px;}
+  .promo .btn-primary{ background:var(--void); color:var(--gold-bright); }
+  .promo .btn-primary:hover{ background:var(--gunmetal); }
+
+  /* ---------- COVERAGE AREAS ---------- */
+  .areas{ display:flex; flex-wrap:wrap; gap:14px; margin-top:36px; }
+  .area-chip{
+    border:1px solid var(--line);
+    padding:12px 22px;
+    font-family:'Barlow Condensed',sans-serif; letter-spacing:0.08em; text-transform:uppercase; font-size:14.5px;
+    color:var(--bone-dim);
+    display:flex; align-items:center; gap:10px;
+    transition:.25s;
+  }
+  .area-chip:hover{ border-color:var(--gold); color:var(--gold-bright); }
+  .area-chip .dot{ width:6px; height:6px; background:var(--gold); border-radius:50%; }
+
+  /* ---------- GALLERY ---------- */
+  .gallery{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    grid-auto-rows:220px;
+    gap:6px;
+  }
+  .gallery img{ width:100%; height:100%; object-fit:cover; filter:grayscale(15%) contrast(1.05); transition:.4s; }
+  .gallery a:hover img{ filter:grayscale(0%) contrast(1.1); transform:scale(1.03); }
+  .gallery a{ overflow:hidden; display:block; }
+  .gallery a:nth-child(1){ grid-column:span 2; grid-row:span 2; }
+  .gallery a:nth-child(4){ grid-column:span 2; }
+
+  /* ---------- CONTACT ---------- */
+  .contact{
+    background:var(--gunmetal);
+    border-top:1px solid var(--line);
+  }
+  .contact-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:70px;
+  }
+  .contact-info h2{ font-size:clamp(28px,3.6vw,42px); color:var(--bone); margin:14px 0 20px;}
+  .contact-info p{ color:var(--bone-dim); margin-bottom:30px; max-width:440px;}
+  .cline{ display:flex; gap:16px; align-items:flex-start; padding:16px 0; border-top:1px solid rgba(236,231,220,0.12);}
+  .cline:last-of-type{ border-bottom:1px solid rgba(236,231,220,0.12);}
+  .cline .k{ font-family:'Barlow Condensed',sans-serif; font-size:13px; letter-spacing:0.14em; text-transform:uppercase; color:var(--gold); width:100px; flex:none; padding-top:2px;}
+  .cline .v{ color:var(--bone); font-size:16px; }
+  .cline .v a:hover{ color:var(--gold-bright); }
+  .socials{ display:flex; gap:14px; margin-top:26px; }
+  .socials a{
+    width:42px; height:42px; border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    transition:.25s;
+  }
+  .socials a:hover{ border-color:var(--gold); background:rgba(201,151,63,0.08); }
+  .socials svg{ width:18px; height:18px; fill:var(--bone-dim); }
+  .socials a:hover svg{ fill:var(--gold-bright); }
+
+  /* form */
+  .form-panel{
+    background:var(--void);
+    border:1px solid var(--line);
+    padding:44px;
+  }
+  .form-panel h3{ font-size:20px; color:var(--bone); margin-bottom:6px;}
+  .form-panel .sub{ color:var(--bone-dim); font-size:14.5px; margin-bottom:26px;}
+  .field{ margin-bottom:20px; }
+  .field label{ display:block; font-family:'Barlow Condensed',sans-serif; font-size:13px; letter-spacing:0.1em; text-transform:uppercase; color:var(--steel-light); margin-bottom:8px;}
+  .field input, .field select, .field textarea{
+    width:100%;
+    background:var(--gunmetal);
+    border:1px solid rgba(236,231,220,0.15);
+    color:var(--bone);
+    padding:13px 14px;
+    font-family:'Barlow',sans-serif; font-size:15px;
+    transition:border-color .2s;
+  }
+  .field input:focus, .field select:focus, .field textarea:focus{
+    outline:none; border-color:var(--gold);
+  }
+  .field textarea{ resize:vertical; min-height:90px; }
+  .form-panel .btn-primary{ width:100%; justify-content:center; border:none; cursor:pointer; }
+  .form-note{ font-size:12.5px; color:var(--steel-light); margin-top:14px; text-align:center; }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    padding:36px 0;
+    border-top:1px solid rgba(236,231,220,0.1);
+  }
+  .footer-inner{
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px;
+  }
+  .footer-inner p{ font-size:13.5px; color:var(--steel-light); }
+  .footer-links{ display:flex; gap:24px; }
+  .footer-links a{ font-size:13.5px; color:var(--steel-light); }
+  .footer-links a:hover{ color:var(--gold); }
+
+  /* utility */
+  .center{ text-align:center; margin-left:auto; margin-right:auto; }
+
+  /* focus visibility */
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible{
+    outline:2px solid var(--gold-bright); outline-offset:2px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    *{ transition:none !important; }
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:980px){
+    nav.links{ display:none; }
+    .about{ grid-template-columns:1fr; }
+    .services-grid{ grid-template-columns:repeat(2,1fr); }
+    .contact-grid{ grid-template-columns:1fr; }
+    .gallery{ grid-template-columns:repeat(2,1fr); grid-auto-rows:180px;}
+  }
+  @media (max-width:600px){
+    .services-grid{ grid-template-columns:1fr; }
+    .hero-strip div{ flex:1 1 45%; }
+    .promo-inner{ flex-direction:column; align-items:flex-start; }
+    .sec-pad{ padding:80px 0; }
+    .wrap{ padding:0 20px; }
+    .about-img img{ clip-path:none; }
+    .form-panel{ padding:28px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="#top" class="brand">
+      <img src="images/logo-banner.jpg" alt="Falcon Apex Security Group logo" style="height:34px;width:auto;">
+    </a>
+    <nav class="links">
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#why">Why Us</a>
+      <a href="#areas">Coverage</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="tel:+27626782047" class="nav-cta">062 678 2047</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <span class="eyebrow">Falcon Apex Security Group (Pty) Ltd &nbsp;·&nbsp; Welkom, Free State</span>
+      <h1>Real Security.<span class="accent">Real Protection.</span></h1>
+      <p class="hero-sub">Armed response, guarding, CCTV and close protection built on experience and driven by purpose. We don't hope for safety — we deliver it.</p>
+      <div class="hero-actions">
+        <a href="https://wa.me/27626782047" target="_blank" rel="noopener" class="btn btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="flex:none;"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.4-1.5-.9-.8-1.5-1.8-1.6-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3Z"/><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.8-1.5A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.2-.4-4.5-1.2l-.3-.2-3 .9.9-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Z"/></svg>
+          062 678 2047
+        </a>
+      </div>
+      <div class="hero-strip">
+        <div><div class="num">24/7</div><div class="lbl">Monitoring &amp; Response</div></div>
+        <div><div class="num">6+</div><div class="lbl">Towns Covered</div></div>
+        <div><div class="num">100%</div><div class="lbl">Armed &amp; Unarmed Trained</div></div>
+        <div><div class="num">35%</div><div class="lbl">Off New Sign-Ups</div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cut-divider"></div>
+
+  <!-- MISSION STRIP -->
+  <section class="mission grain">
+    <div class="wrap">
+      <blockquote>We don't just provide security. We deliver <span class="g">peace of mind</span> — every mission, every client, every time.</blockquote>
+      <cite>Matthew du Plessis — Managing Director &amp; Owner</cite>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="sec-pad" id="services">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">What We Do</span>
+        <h2>Professional guarding services</h2>
+        <p>From static guarding to tactical rapid response, every Falcon Apex service is built around one standard: visible deterrence backed by real, trained people.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2 4 5v6c0 5 3.4 8.7 8 10 4.6-1.3 8-5 8-10V5l-8-3Z"/></svg>
+          <h3>Armed &amp; Unarmed Guarding</h3>
+          <p>Static and mobile deployments handled by trained, professional officers for any environment.</p>
+        </div>
+        <div class="service-card">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 13h18M5 13l1.5-5h11L19 13M6 17a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Zm12 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3Z"/></svg>
+          <h3>Mobile Patrols</h3>
+          <p>Scheduled and randomised patrol routes that keep a visible presence and real deterrence on site.</p>
+        </div>
+        <div class="service-card">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="4" y="6" width="13" height="9" rx="1"/><path d="M17 9.5 21 7v8l-4-2.5"/></svg>
+          <h3>24/7 CCTV &amp; Monitoring</h3>
+          <p>HD camera installation with round-the-clock monitoring and a free response team on patrol.</p>
+        </div>
+        <div class="service-card">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2v20M2 12h20M5 5l14 14M19 5 5 19"/></svg>
+          <h3>Access Control</h3>
+          <p>Protecting people, property and assets with disciplined entry and exit management.</p>
+        </div>
+        <div class="service-card">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3 3 7v5c0 5 4 8.5 9 9 5-.5 9-4 9-9V7l-9-4Z"/><path d="m9 12 2 2 4-4"/></svg>
+          <h3>VIP &amp; Close Protection</h3>
+          <p>Discreet, professional executive and personal protection for public figures and private clients.</p>
+        </div>
+        <div class="service-card">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="3"/><path d="M5 21c0-4 3-6 7-6s7 2 7 6"/></svg>
+          <h3>Event Security</h3>
+          <p>Crowd control and event risk management so your gathering runs safe from start to finish.</p>
+        </div>
+        <div class="service-card">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 20c4-2 7-5.5 7-10V5l-7-2-7 2v5c0 4.5 3 8 7 10Z"/></svg>
+          <h3>Risk Assessments</h3>
+          <p>Site evaluations and tailor-made risk analysis to identify threats before they become incidents.</p>
+        </div>
+        <div class="service-card">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 12h4l2-7 4 14 2-7h4"/></svg>
+          <h3>Rapid Response (FRT)</h3>
+          <p>Our Force Response Team is tactically ready 24/7 — deter, detect, defend, on call around the clock.</p>
+        </div>
+        <div class="service-card">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="11" cy="11" r="6"/><path d="m20 20-4-4"/></svg>
+          <h3>Private Investigations</h3>
+          <p>Background checks, surveillance and risk assessments handled with total discretion.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cut-divider rev"></div>
+
+  <!-- ABOUT / FOUNDER -->
+  <section class="sec-pad" id="about" style="background:var(--gunmetal);">
+    <div class="wrap about">
+      <div class="about-img">
+        <img src="images/matthew-carposter.jpg" alt="Matthew du Plessis, Managing Director of Falcon Apex Security Group">
+        <div class="tag">Managing Director &amp; Owner</div>
+      </div>
+      <div class="about-copy">
+        <span class="eyebrow">Built On Experience</span>
+        <h2>I don't just run a security company. I lead. I protect. I deliver.</h2>
+        <p>I started this journey with a simple belief: people deserve to feel safe. Through hard work, long nights and real-life lessons, I turned that belief into something bigger — Falcon Apex Security Group.</p>
+        <p>Today I stand with a team I trust, protecting what matters most to families, businesses and communities across the Free State. We go the extra mile, and we do the extra.</p>
+        <div class="sign">Matthew du Plessis<span>Founder, Managing Director &amp; Owner — Falcon Apex Security Group (Pty) Ltd</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US -->
+  <section class="stripe" id="why">
+    <div class="wrap">
+      <span class="eyebrow">Why Falcon Apex</span>
+      <h2 style="margin-top:14px; font-size:clamp(28px,3.6vw,42px); max-width:600px;">Vigilance. Integrity. Protection.</h2>
+      <ul class="why-list">
+        <li>
+          <span class="n">01</span>
+          <div><h4>Highly trained professionals</h4><p>Every officer is trained, vetted and tactically prepared before deployment.</p></div>
+        </li>
+        <li>
+          <span class="n">02</span>
+          <div><h4>24/7 rapid response</h4><p>Our Force Response Team is always on standby — rapid, reliable, ready.</p></div>
+        </li>
+        <li>
+          <span class="n">03</span>
+          <div><h4>Modern equipment</h4><p>HD cameras, tracked vehicles and current tactical gear across every deployment.</p></div>
+        </li>
+        <li>
+          <span class="n">04</span>
+          <div><h4>Discreet &amp; client-focused</h4><p>We work around your needs, not the other way around — no excuses, just results.</p></div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PROMO -->
+  <section class="promo">
+    <div class="wrap promo-inner">
+      <div style="display:flex; align-items:center; gap:26px;">
+        <div class="num">35<sup>%</sup></div>
+        <div class="promo-text">
+          <h3>Off for all new clients &amp; quotes</h3>
+          <p>Sign up before January 2027 &amp; save</p>
+        </div>
+      </div>
+      <a href="#contact" class="btn btn-primary">Claim This Offer</a>
+    </div>
+  </section>
+
+  <!-- COVERAGE AREAS -->
+  <section class="sec-pad" id="areas">
+    <div class="wrap">
+      <div class="sec-head" style="margin-bottom:0;">
+        <span class="eyebrow">Proudly Protecting Welkom &amp; Surrounds</span>
+        <h2>Where we operate</h2>
+        <p>Based in Welkom, Free State, with response teams covering the wider Goldfields region.</p>
+      </div>
+      <div class="areas">
+        <div class="area-chip"><span class="dot"></span>Welkom</div>
+        <div class="area-chip"><span class="dot"></span>Bloemfontein</div>
+        <div class="area-chip"><span class="dot"></span>Henneman</div>
+        <div class="area-chip"><span class="dot"></span>Odendaalsrus</div>
+        <div class="area-chip"><span class="dot"></span>Virginia</div>
+        <div class="area-chip"><span class="dot"></span>Bothaville</div>
+        <div class="area-chip"><span class="dot"></span>Wesselsbron</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section>
+    <div class="gallery">
+      <a href="images/full-team.jpg" target="_blank" rel="noopener"><img src="images/full-team.jpg" alt="Falcon Apex operations team"></a>
+      <a href="images/welkom-tactical.jpg" target="_blank" rel="noopener"><img src="images/welkom-tactical.jpg" alt="Falcon Apex tactical officer on deployment"></a>
+      <a href="images/frt-team.jpg" target="_blank" rel="noopener"><img src="images/frt-team.jpg" alt="Falcon Apex Force Response Team"></a>
+      <a href="images/rainy-hq.jpg" target="_blank" rel="noopener"><img src="images/rainy-hq.jpg" alt="Falcon Apex officer on night patrol"></a>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="sec-pad contact" id="contact">
+    <div class="wrap contact-grid">
+      <div class="contact-info">
+        <span class="eyebrow">Get In Touch</span>
+        <h2>Protecting what matters most.</h2>
+        <p>Call us today for a free quote and on-site survey. Our team responds fast — day or night.</p>
+
+        <div class="cline">
+          <span class="k">Phone</span>
+          <span class="v"><a href="tel:+27626782047">062 678 2047</a></span>
+        </div>
+        <div class="cline">
+          <span class="k">Email</span>
+          <span class="v"><a href="mailto:falconapexsecurity@gmail.com">falconapexsecurity@gmail.com</a></span>
+        </div>
+        <div class="cline">
+          <span class="k">Location</span>
+          <span class="v">Welkom, Free State, South Africa</span>
+        </div>
+        <div class="cline">
+          <span class="k">Contact</span>
+          <span class="v">Matthew du Plessis — Managing Director</span>
+        </div>
+
+        <div class="socials">
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13.5 21v-7.5H16l.5-3H13.5V8.3c0-.87.24-1.46 1.5-1.46H16.6V4.14C16.3 4.1 15.3 4 14.1 4c-2.5 0-4.2 1.5-4.2 4.3v2.2H7.4v3h2.5V21h3.6Z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 8.2a3.8 3.8 0 1 0 0 7.6 3.8 3.8 0 0 0 0-7.6Zm0 6.27a2.47 2.47 0 1 1 0-4.94 2.47 2.47 0 0 1 0 4.94ZM17.9 4H6.1A2.1 2.1 0 0 0 4 6.1v11.8A2.1 2.1 0 0 0 6.1 20h11.8a2.1 2.1 0 0 0 2.1-2.1V6.1A2.1 2.1 0 0 0 17.9 4Zm.85 13.9c0 .47-.38.85-.85.85H6.1a.85.85 0 0 1-.85-.85V6.1c0-.47.38-.85.85-.85h11.8c.47 0 .85.38.85.85v11.8ZM16.9 6.9a.9.9 0 1 0 0 1.8.9.9 0 0 0 0-1.8Z"/></svg></a>
+          <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M14.5 3h2.4c.15 1.4.85 2.6 2.1 3.3v2.4c-1.3-.1-2.5-.5-3.4-1.2v6.3a4.9 4.9 0 1 1-4.9-4.9c.2 0 .4 0 .6.03v2.4a2.5 2.5 0 1 0 1.9 2.42V3Z"/></svg></a>
+        </div>
+      </div>
+
+      <div class="form-panel">
+        <h3>Request a free quote</h3>
+        <p class="sub">Tell us what you need protected and we'll get back to you fast.</p>
+        <form onsubmit="event.preventDefault(); this.querySelector('.form-note').textContent='Thanks — we will be in touch shortly.';">
+          <div class="field">
+            <label for="name">Full name</label>
+            <input id="name" type="text" required placeholder="Your name">
+          </div>
+          <div class="field">
+            <label for="phone">Phone number</label>
+            <input id="phone" type="tel" required placeholder="082 000 0000">
+          </div>
+          <div class="field">
+            <label for="service">Service needed</label>
+            <select id="service">
+              <option>Armed / Unarmed Guarding</option>
+              <option>CCTV Installation &amp; Monitoring</option>
+              <option>VIP / Close Protection</option>
+              <option>Event Security</option>
+              <option>Mobile Patrols</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="msg">Message</label>
+            <textarea id="msg" placeholder="Tell us about your site or event..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Send Request</button>
+          <p class="form-note">We typically respond within one business hour.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <p>© 2026 Falcon Apex Security Group (Pty) Ltd. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <p>Welkom, Free State · Your Safety Is Our Mission.</p>
+  </div>
+</footer>
+
+</body>
+</html>
